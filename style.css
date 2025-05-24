@@ -1,0 +1,260 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+/* 基本的なスタイル */
+body {
+    font-family: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Hiragino Sans", "ヒラギノ角ゴ Pro", "メイリオ", Meiryo, Osaka, "MS P Gothic", "MS PGothic", sans-serif;
+    font-weight: 400; /* 基本のフォントウェイト */
+    margin: 0;
+    padding: 0;
+    line-height: 1.7; /* 行間を少し広めに */
+    background-color: #f8f9fa; /* 背景を少し明るく、よりニュートラルに */
+    color: #343a40; /* 基本の文字色を少し柔らかく */
+}
+
+/* ヘッダー */
+header {
+    background-color: #212529; /* ヘッダー背景をより深い黒に近い色に */
+    color: #e9ecef;
+    padding: 15px 35px; /* 左右のパディングを少し広めに */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15); /* 影を調整 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9em; /* タイトルを少し大きく */
+    font-weight: 700; /* タイトルは太めに */
+    color: #ffffff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* ナビゲーション */
+nav {
+    overflow: hidden;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    font-family: 'Montserrat', sans-serif; /* ナビゲーションもMontserratに */
+    font-weight: 500;
+    display: block;
+    color: #ced4da; /* 通常時の文字色を少し抑えめに */
+    text-decoration: none;
+    padding: 12px 18px; /* パディング調整 */
+    transition: color 0.3s ease; /* 色の変化をスムーズに */
+    margin-left: 8px;
+    white-space: nowrap;
+    position: relative; /* 下線アニメーションのため */
+    overflow: hidden; /* 下線アニメーションのため */
+}
+
+nav ul li a::after { /* ホバー時の下線アニメーション */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%; /* 初期位置を左外に */
+    width: 100%;
+    height: 2px;
+    background-color: #007bff; /* アクセントカラー (BootstrapのPrimary Blue) */
+    transition: left 0.3s ease-in-out;
+}
+
+nav ul li > a:hover,
+nav ul li:hover > a {
+    color: #ffffff; /* ホバー時の文字色を白に */
+}
+
+nav ul li > a:hover::after,
+nav ul li:hover > a::after {
+    left: 0; /* ホバー時に下線をスライドイン */
+}
+
+
+/* サブメニュー（ドロップダウン） */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px); /* 親メニューから少し離す */
+    left: 0;
+    background-color: #2c3034; /* サブメニュー背景 */
+    padding: 8px 0; /* 上下パディング */
+    min-width: 230px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.2); /* 影を少し濃く */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px); /* アニメーション開始位置 */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    border-radius: 5px; /* 角を丸める */
+    border-top: 2px solid #007bff; /* 上部にアクセントカラーのボーダー */
+}
+
+nav ul li:hover > ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+nav ul li ul li {
+    width: 100%;
+}
+
+nav ul li ul li a {
+    font-family: 'Noto Sans JP', sans-serif; /* サブメニューは日本語フォント */
+    font-weight: 500;
+    padding: 10px 22px;
+    color: #adb5bd;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+nav ul li ul li a:hover::after { /* サブメニューのホバー下線はなし */
+    width: 0;
+    left: -100%; /* 明示的にリセット */
+}
+
+nav ul li ul li a:hover {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+.dropdown-indicator { /* ドロップダウンインジケーターはHTML構造上残っていますが、CSSで非表示にしています */
+    display: none;
+}
+
+/* メインコンテンツエリア */
+main {
+    padding: 40px 25px; /* パディング調整 */
+    max-width: 1000px; /* 最大幅を少し広げる */
+    margin: 40px auto;
+    background-color: #ffffff;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.07); /* 影をよりソフトに */
+    border-radius: 8px; /* 角の丸みを大きく */
+}
+
+main h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #212529;
+    border-bottom: 3px solid #007bff; /* アクセントカラーの線を太く */
+    padding-bottom: 15px;
+    margin-top: 0; /* main直下のh1の上のマージンをリセット */
+    margin-bottom: 35px;
+    text-align: center; /* メインタイトルを中央揃えに */
+}
+
+/* 自己紹介セクション (HOMEページ用) */
+.profile-section {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: transparent; /* 背景をメインと同じに */
+    border: none; /* ボーダーなしに */
+    border-top: 1px solid #dee2e6; /* 上に区切り線 */
+    border-bottom: 1px solid #dee2e6; /* 下に区切り線 */
+    border-radius: 0; /* 角丸なし */
+}
+
+.profile-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #343a40;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: left; /* 左揃えに戻す */
+    border-bottom: none; /* 下線なし */
+}
+
+.profile-section p {
+    margin-bottom: 18px;
+    font-size: 1.05em; /* 本文フォントを少し大きく */
+}
+
+.profile-section ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.profile-section ul li {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 1.05em;
+}
+
+.profile-section ul li::before {
+    content: "✓"; /* チェックマークに変更 */
+    position: absolute;
+    left: 0;
+    color: #007bff; /* アクセントカラー */
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.profile-section ul li strong {
+    font-weight: 700; /* Noto Sans JP の Bold */
+    color: #212529;
+}
+
+/* 他のページ内の一般的なpタグなどのスタイル */
+main p {
+    font-size: 1.05em;
+    margin-bottom: 1.2em;
+}
+
+/* 他のページでコンテンツアイテムをリスト表示する場合のスタイル例 */
+.content-item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+}
+
+.content-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    color: #343a40;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.content-item a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.content-item a:hover {
+    text-decoration: underline;
+}
+
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #212529; /* ヘッダーと合わせる */
+    color: #adb5bd;
+    margin-top: 50px;
+    font-size: 0.95em;
+}
