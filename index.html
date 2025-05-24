@@ -3,73 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME - iroha150321</title>
+    <title>HOME - [あなたの研究室名やサイト名など]</title>
     <style>
         /* 基本的なスタイル */
         body {
-            font-family: 'Arial', sans-serif; /* フォントはお好みで変更してください */
+            font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Hiragino Sans", "ヒラギノ角ゴ Pro", "メイリオ", Meiryo, Osaka, "MS P Gothic", "MS PGothic", sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            background-color: #f4f4f4; /* 背景を非常に薄いグレーに */
+            color: #333; /* 基本の文字色 */
         }
 
         /* ヘッダー */
         header {
-            background-color: #333; /* ヘッダーの背景色 */
-            color: white;
-            padding: 10px 0;
-            position: sticky; /* スクロールしてもヘッダーを上部に固定 */
+            background-color: #2c3e50; /* ヘッダーの背景色を濃い青みがかったグレーに */
+            color: #ecf0f1; /* ヘッダーの基本文字色を明るいグレーに */
+            padding: 0; /* 上下のpaddingはナビゲーションリンク側で調整 */
+            position: sticky;
             top: 0;
-            z-index: 1000; /* 他の要素より手前に表示 */
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* ヘッダー下に少し影を付ける */
         }
 
         /* ナビゲーション */
         nav ul {
-            list-style-type: none; /* リストの点を消す */
+            list-style-type: none;
             margin: 0;
             padding: 0;
-            display: flex; /* メニュー項目を横並びにする */
-            justify-content: center; /* メニュー項目を中央揃えにする */
+            display: flex;
+            justify-content: center;
         }
 
         nav ul li {
-            position: relative; /* サブメニューの位置決めの基準 */
+            position: relative;
         }
 
         nav ul li a {
             display: block;
-            color: white;
-            text-decoration: none; /* リンクの下線を消す */
-            padding: 15px 25px; /* メニュー項目の余白 */
-            transition: background-color 0.3s; /* 背景色の変化を滑らかに */
+            color: #ecf0f1; /* ナビゲーションリンクの文字色 */
+            text-decoration: none;
+            padding: 20px 28px; /* メニュー項目の余白を調整 */
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            font-weight: 500; /* 少し太めに */
         }
 
-        nav ul li a:hover,
-        nav ul li:hover > a { /* メインメニュー項目にマウスオーバーしたとき */
-            background-color: #555; /* 背景色を少し明るくする */
+        /* メインメニュー項目にマウスオーバーしたとき */
+        nav ul li > a:hover,
+        nav ul li:hover > a { /* 直接の子のaタグ、またはliにホバーした際のaタグ */
+            background-color: #34495e; /* 少し明るいダークブルーグレー */
+            color: #ffffff; /* 文字色を白に */
         }
 
         /* サブメニュー（ドロップダウン） */
         nav ul li ul {
-            display: none; /* 通常は非表示 */
+            display: none;
             position: absolute;
             top: 100%; /* 親メニューの真下に表示 */
             left: 0;
-            background-color: #444; /* サブメニューの背景色 */
-            padding: 0;
-            min-width: 200px; /* サブメニューの最小幅 */
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* 影を付ける */
-            opacity: 0; /* 初期状態は透明 */
-            visibility: hidden; /* 初期状態はアクセス不可 */
-            transform: translateY(10px); /* 少し下にずらしてアニメーションの準備 */
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; /* スライドアニメーション */
+            background-color: #2c3e50; /* サブメニューの背景色をヘッダーと合わせる */
+            padding: 5px 0; /* サブメニュー上下のpaddingを少し減らす */
+            min-width: 230px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(5px); /* アニメーション開始位置を少し近づける */
+            transition: opacity 0.25s ease-out, transform 0.25s ease-out, visibility 0.25s;
+            border-top: 1px solid #34495e; /* サブメニュー上部に区切り線 */
         }
 
-        nav ul li:hover > ul { /* メインメニュー項目にマウスオーバーしたとき、サブメニューを表示 */
-            display: block; /* 表示状態にする（CSSアニメーションのため） */
-            opacity: 1; /* 不透明にする */
-            visibility: visible; /* アクセス可能にする */
-            transform: translateY(0); /* 元の位置に戻す */
+        nav ul li:hover > ul {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         nav ul li ul li {
@@ -77,33 +84,45 @@
         }
 
         nav ul li ul li a {
-            padding: 12px 20px;
-            color: #f0f0f0; /* サブメニューの文字色 */
+            padding: 12px 22px; /* サブメニュー項目のpadding */
+            color: #bdc3c7; /* サブメニューの文字色を少し抑えた明るいグレーに */
+            font-weight: normal; /* サブメニューは標準の太さ */
         }
 
         nav ul li ul li a:hover {
-            background-color: #666; /* サブメニュー項目にマウスオーバーしたときの背景色 */
+            background-color: #34495e; /* サブメニュー項目マウスオーバー時の背景色 */
+            color: #ffffff; /* サブメニュー項目マウスオーバー時の文字色 */
         }
 
-        /* メニュー項目の隣の矢印（▼） */
+        /* メニュー項目の隣の矢印（▼） は非表示に */
         .dropdown-indicator {
-            font-size: 0.8em; /* 矢印のサイズ */
-            margin-left: 8px;
+            display: none;
         }
 
         /* メインコンテンツエリア */
         main {
-            padding: 20px;
-            margin-top: 20px; /* ヘッダーの高さ分（必要に応じて調整） */
+            padding: 30px 20px; /* 上下のpaddingを少し増やす */
+            max-width: 960px; /* コンテンツの最大幅を設定 */
+            margin: 20px auto; /* 中央寄せ */
+            background-color: #ffffff; /* メインコンテンツの背景は白 */
+            box-shadow: 0 0 10px rgba(0,0,0,0.05); /* ほんのり影 */
+        }
+
+        main h1 {
+            color: #2c3e50; /* 見出しの色をヘッダーの色と合わせる */
+            border-bottom: 2px solid #3498db; /* アクセントカラーの青で見出し下線 */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         /* フッター */
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #f8f8f8;
-            border-top: 1px solid #ddd;
+            padding: 25px 20px;
+            background-color: #2c3e50; /* フッター背景をヘッダーと合わせる */
+            color: #bdc3c7; /* フッター文字色 */
             margin-top: 40px;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -117,28 +136,29 @@
                 <li>
                     <a href="#">資料置き場 <span class="dropdown-indicator">▼</span></a>
                     <ul>
-                        <li><a href="#">物理資料置き場</a></li>
-                        <li><a href="#">プログラミング資料置き場</a></li>
+                        <li><a href="#">（例：〇〇の資料）</a></li>
+                        <li><a href="#">（例：△△のまとめ）</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">論文など <span class="dropdown-indicator">▼</span></a>
                     <ul>
-                        <li><a href="#">発表論文リスト</a></li>
-                        <li><a href="#">参考論文メモ</a></li>
+                        <li><a href="#">（例：発表論文リスト）</a></li>
+                        <li><a href="#">（例：参考論文メモ）</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">備忘録 <span class="dropdown-indicator">▼</span></a>
                     <ul>
-                        <li><a href="#">実験手順メモ</a></li>
-                        <li><a href="#">プログラミングTips</a></li>
+                        <li><a href="#">（例：実験手順メモ）</a></li>
+                        <li><a href="#">（例：プログラミングTips）</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">日記 <span class="dropdown-indicator">▼</span></a>
                     <ul>
-                        <li><a href="#">日誌</a></li>
+                        <li><a href="#">（例：研究日誌）</a></li>
+                        <li><a href="#">（例：日常の記録）</a></li>
                     </ul>
                 </li>
             </ul>
@@ -152,7 +172,7 @@
         </main>
 
     <footer>
-        <p>&copy; 2025 iroha150321. All Rights Reserved.</p>
+        <p>&copy; 2025 [あなたの名前 または サイトの著作権者名]. All Rights Reserved.</p>
     </footer>
 
 </body>
