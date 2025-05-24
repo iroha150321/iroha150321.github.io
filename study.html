@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME - [あなたの研究室名やサイト名など]</title>
+    <style>
+        /* 基本的なスタイル */
+        body {
+            font-family: 'Arial', sans-serif; /* フォントはお好みで変更してください */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #333; /* ヘッダーの背景色 */
+            color: white;
+            padding: 10px 0;
+            position: sticky; /* スクロールしてもヘッダーを上部に固定 */
+            top: 0;
+            z-index: 1000; /* 他の要素より手前に表示 */
+        }
+
+        /* ナビゲーション */
+        nav ul {
+            list-style-type: none; /* リストの点を消す */
+            margin: 0;
+            padding: 0;
+            display: flex; /* メニュー項目を横並びにする */
+            justify-content: center; /* メニュー項目を中央揃えにする */
+        }
+
+        nav ul li {
+            position: relative; /* サブメニューの位置決めの基準 */
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none; /* リンクの下線を消す */
+            padding: 15px 25px; /* メニュー項目の余白 */
+            transition: background-color 0.3s; /* 背景色の変化を滑らかに */
+        }
+
+        nav ul li a:hover,
+        nav ul li:hover > a { /* メインメニュー項目にマウスオーバーしたとき */
+            background-color: #555; /* 背景色を少し明るくする */
+        }
+
+        /* サブメニュー（ドロップダウン） */
+        nav ul li ul {
+            display: none; /* 通常は非表示 */
+            position: absolute;
+            top: 100%; /* 親メニューの真下に表示 */
+            left: 0;
+            background-color: #444; /* サブメニューの背景色 */
+            padding: 0;
+            min-width: 200px; /* サブメニューの最小幅 */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* 影を付ける */
+            opacity: 0; /* 初期状態は透明 */
+            visibility: hidden; /* 初期状態はアクセス不可 */
+            transform: translateY(10px); /* 少し下にずらしてアニメーションの準備 */
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; /* スライドアニメーション */
+        }
+
+        nav ul li:hover > ul { /* メインメニュー項目にマウスオーバーしたとき、サブメニューを表示 */
+            display: block; /* 表示状態にする（CSSアニメーションのため） */
+            opacity: 1; /* 不透明にする */
+            visibility: visible; /* アクセス可能にする */
+            transform: translateY(0); /* 元の位置に戻す */
+        }
+
+        nav ul li ul li {
+            width: 100%;
+        }
+
+        nav ul li ul li a {
+            padding: 12px 20px;
+            color: #f0f0f0; /* サブメニューの文字色 */
+        }
+
+        nav ul li ul li a:hover {
+            background-color: #666; /* サブメニュー項目にマウスオーバーしたときの背景色 */
+        }
+
+        /* メニュー項目の隣の矢印（▼） */
+        .dropdown-indicator {
+            font-size: 0.8em; /* 矢印のサイズ */
+            margin-left: 8px;
+        }
+
+        /* メインコンテンツエリア */
+        main {
+            padding: 20px;
+            margin-top: 20px; /* ヘッダーの高さ分（必要に応じて調整） */
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="#">資料置き場 <span class="dropdown-indicator">▼</span></a>
+                    <ul>
+                        <li><a href="#">（例：〇〇の資料）</a></li>
+                        <li><a href="#">（例：△△のまとめ）</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">論文など <span class="dropdown-indicator">▼</span></a>
+                    <ul>
+                        <li><a href="#">（例：発表論文リスト）</a></li>
+                        <li><a href="#">（例：参考論文メモ）</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">備忘録 <span class="dropdown-indicator">▼</span></a>
+                    <ul>
+                        <li><a href="#">（例：実験手順メモ）</a></li>
+                        <li><a href="#">（例：プログラミングTips）</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">日記 <span class="dropdown-indicator">▼</span></a>
+                    <ul>
+                        <li><a href="#">（例：研究日誌）</a></li>
+                        <li><a href="#">（例：日常の記録）</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>ようこそ！</h1>
+        <p>このウェブサイトは、私の学習の記録や作成した資料などを公開する場所です。</p>
+        <p>ごゆっくりご覧ください。</p>
+        </main>
+
+    <footer>
+        <p>&copy; 2025 [あなたの名前 または サイトの著作権者名]. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
